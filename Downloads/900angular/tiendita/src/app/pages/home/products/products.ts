@@ -1,11 +1,19 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterLink } from '@angular/router'; // 1. Importamos RouterLink para la navegación
 
 @Component({
   selector: 'app-products',
-  imports: [],
+  standalone: true,
+  imports: [RouterLink], // 2. Agregamos RouterLink a los imports del componente
   template: `
     <div class="productos-container">
       <h2>Lista de Productos</h2>
+      
+      <div style="margin-bottom: 20px;">
+        <button routerLink='/formulario' class="btn-formulario">
+          Agregar Nuevo Producto
+        </button>
+      </div>
       
       <table border="1">
         <thead>
@@ -34,9 +42,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class Products {
   
-  // Método que se ejecuta al presionar el botón
   onButtonClick(): void {
     console.log('¡Botón presionado!');
-    // Aquí puedes agregar la lógica que necesites
   }
 }

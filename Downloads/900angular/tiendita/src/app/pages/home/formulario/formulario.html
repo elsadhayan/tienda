@@ -1,0 +1,68 @@
+<div class="container mt-4" style="max-width: 600px;">
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h3 class="mb-0">Agregar Nuevo Producto</h3>
+    </div>
+    
+    <div class="card-body">
+      <form [formGroup]="productoForm" (ngSubmit)="guardarProducto()">
+        
+        <div class="mb-3">
+          <label for="nombre" class="form-label fw-bold">Nombre del producto</label>
+          <input type="text" id="nombre" class="form-control" formControlName="nombre" placeholder="Ej. Refresco Cola 600ml">
+          <div *ngIf="productoForm.get('nombre')?.invalid && productoForm.get('nombre')?.touched" class="text-danger small mt-1">
+            El nombre es obligatorio y debe tener al menos 3 caracteres.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="categoria" class="form-label fw-bold">Categoría</label>
+          <select id="categoria" class="form-select" formControlName="categoria">
+            <option value="">Selecciona una categoría...</option>
+            <option value="abarrotes">Abarrotes</option>
+            <option value="lacteos">Lácteos y Refrigerados</option>
+            <option value="botanas">Botanas y Dulces</option>
+            <option value="bebidas">Bebidas</option>
+            <option value="limpieza">Limpieza y Hogar</option>
+          </select>
+          <div *ngIf="productoForm.get('categoria')?.invalid && productoForm.get('categoria')?.touched" class="text-danger small mt-1">
+            Debes seleccionar una categoría.
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="precio" class="form-label fw-bold">Precio de Venta ($)</label>
+            <input type="number" id="precio" class="form-control" formControlName="precio" step="0.50" min="0">
+            <div *ngIf="productoForm.get('precio')?.invalid && productoForm.get('precio')?.touched" class="text-danger small mt-1">
+              Ingresa un precio válido.
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="stock" class="form-label fw-bold">Cantidad en Stock</label>
+            <input type="number" id="stock" class="form-control" formControlName="stock" min="0">
+            <div *ngIf="productoForm.get('stock')?.invalid && productoForm.get('stock')?.touched" class="text-danger small mt-1">
+              Ingresa una cantidad válida.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="codigoBarras" class="form-label fw-bold">Código de Barras</label>
+          <input type="text" id="codigoBarras" class="form-control" formControlName="codigoBarras" placeholder="Escanea o escribe el código">
+          <div *ngIf="productoForm.get('codigoBarras')?.invalid && productoForm.get('codigoBarras')?.touched" class="text-danger small mt-1">
+            El código de barras es obligatorio.
+          </div>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-success btn-lg" [disabled]="productoForm.invalid">
+            Guardar Producto
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
