@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { Home } from './pages/home/home';
 import { Products } from './pages/home/products/products';
 import { Formulario } from './pages/home/formulario/formulario';
+import { Registro } from './pages/registro/registro';
 
 
 export const routes: Routes = [
@@ -17,6 +18,9 @@ export const routes: Routes = [
 },
 {
   path: 'formulario', component: Formulario
+},
+{
+  path: 'registro', component: Registro
 }
 
 ]
